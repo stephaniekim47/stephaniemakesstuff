@@ -51,9 +51,9 @@
     background-color: #F5F4F0;
 }
 
-.photo-box.functional:empty {
+/*.photo-box.functional:empty {
 	display: none;
-}
+}*/
 
 img {
     width: 100%;
