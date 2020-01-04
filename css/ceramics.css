@@ -107,8 +107,15 @@ img {
     .photo-box.sculpture:empty {
         display: none;
     }
+
+	/*one empty box for 2 columns*/
     .photo-box.functional:empty {
         display: initial;
+    }
+
+	/*one empty box for 2 columns*/
+    .photo-box.functional:empty:last-child {
+        display: none;
     }
 
 }
