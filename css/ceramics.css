@@ -55,6 +55,11 @@
 	display: none;
 }*/
 
+/* only one empty box needed */
+.photo-box.functional:empty:last-child {
+	display: none;
+}
+
 img {
     width: 100%;
 }
@@ -100,7 +105,7 @@ img {
 }
 
 /* Desktop */
-
+/* 2 columns */
 @media only screen
     and (max-width: 1230px) {
 
@@ -108,18 +113,25 @@ img {
         display: none;
     }
 
-	/*one empty box for 2 columns*/
-    .photo-box.functional:empty {
+	/*one empty box needed*/
+    /*.photo-box.functional:empty {
         display: initial;
-    }
+    }*/
 
-	/*one empty box for 2 columns*/
-    .photo-box.functional:empty:last-child {
+	/*one empty box needed*/
+    /*.photo-box.functional:empty:last-child {
+        display: none;
+    }*/
+
+	/* no empty boxes needed */
+    .photo-box.functional:empty {
         display: none;
     }
 
 }
 
+
+/* one column */
 @media only screen
     and (max-width: 817px) {
 
