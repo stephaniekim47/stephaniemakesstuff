@@ -86,9 +86,9 @@ img {
     .photo-box.sculpture:empty {
         display: none;
     }
-	.cover-image {
-		width: 85%;
-	}
+    .cover-image {
+	width: 85%;
+    }
 }
 
 /* Mobile */
