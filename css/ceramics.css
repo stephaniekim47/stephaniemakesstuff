@@ -51,9 +51,9 @@
     background-color: #F5F4F0;
 }
 
-/*.photo-box.functional:empty {
+photo-box.functional:empty {
 	display: none;
-}*/
+}
 
 /* only one empty box needed */
 .photo-box.functional:empty:last-child {
