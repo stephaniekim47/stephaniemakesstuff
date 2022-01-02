@@ -25,12 +25,19 @@
     width: 70%;
     align-items: center;
     margin: auto;
+    padding-left: 15%;
 }
 
 .about-me-text {
     text-align: left;
-    font-size: larger;
+    font-size: x-large;
     padding-right: 20%;
+    color: #5b5b5b;
+}
+
+.mask-image {
+    padding-right: 5%;
+    margin-top: 10%;
 }
 
 
@@ -57,10 +64,15 @@ img {
 
     .cover-image {
         width: 70%;
+        padding: 0;
     }
 
     .about-me-text {
         padding: 3%;
+    }
+    .mask-image {
+        margin-top: 0;
+        padding: 0;
     }
 }
 
@@ -80,10 +92,15 @@ img {
     
     .cover-image {
 	    width: 50%;
+        padding: 0;
     }
 
     .about-me-text {
         padding: 3%;
+    }
+    .mask-image {
+        margin-top: 0;
+        padding: 0;
     }
 }
 
@@ -93,8 +110,12 @@ img {
     and (max-width: 1500px) {
     .cover-image {
 	    width: 95%;
+        padding: 0;
     }
     .about-me-text {
         padding: 0;
+    }
+    .mask-image {
+        margin-top: 10%;
     }
 }
