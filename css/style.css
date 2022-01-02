@@ -1,5 +1,5 @@
 body {
-	margin: 0;
+    margin: 0;
     font-family: sans-serif;
     background-color: #F5F4F0;
 }
@@ -14,8 +14,8 @@ img {
 }
 
 a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
 }
 
 a:hover {
@@ -31,6 +31,7 @@ a:hover {
     display: grid;
     align-items: center;
     justify-items: center;
+    font-size: 2vw;
 }
 
 .menu-icon {
