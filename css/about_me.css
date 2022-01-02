@@ -29,6 +29,8 @@
 
 .about-me-text {
     text-align: left;
+    font-size: larger;
+    padding-right: 20%;
 }
 
 
@@ -91,5 +93,8 @@ img {
     and (max-width: 1500px) {
     .cover-image {
 	    width: 95%;
+    }
+    .about-me-text {
+        padding: 0;
     }
 }
