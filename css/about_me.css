@@ -52,8 +52,13 @@ img {
     .cover-gallery {
         grid-template-columns: 1fr;
     }
+
     .cover-image {
-	    width: 85%;
+        width: 70%;
+    }
+
+    .about-me-text {
+        padding: 3%;
     }
 }
 
@@ -75,6 +80,9 @@ img {
 	    width: 50%;
     }
 
+    .about-me-text {
+        padding: 3%;
+    }
 }
 
 /* one column */
