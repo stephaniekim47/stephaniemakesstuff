@@ -1,0 +1,94 @@
+.body {
+    font-family: montserrat;
+}
+
+.first-whole-photo {
+    position: relative;
+}
+
+.top-background-image {
+    width: 100%;
+    margin-bottom: -10px;
+}
+
+.top-image-text-overlay {
+    position: absolute;
+    top: 75%;
+    font-size: 3vw;
+    width: 25%;
+    right: 0;
+}
+
+.intro-text {
+    padding: 10%;
+    background-color: #c2d5f4;
+}
+
+.section-text-size {
+    font-size: 3vw;
+}
+
+.pet-mugs {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    background: #ff8c8c;
+}
+
+.mug-pic {
+    width: 100%;
+}
+
+.mug-section-text-outer {
+    margin: auto;
+    font-size: 3vw;
+    width: 80%;
+}
+
+img {
+    width: 100%;
+}
+
+.is-hidden-desktop {
+    display: auto;
+}
+
+.is-hidden-mobile {
+    display: none;
+}
+
+/* Mobile */
+@media only screen
+    and (min-device-width: 320px)
+    and (max-device-width: 568px) {
+    .intro-text {
+        height: 300px;
+        display: flex;
+        align-items: center;
+    }
+    .top-image-text-overlay {
+        position: absolute;
+        bottom: 30px;
+        width: 50%;
+        right: 0%;
+        font-size: 6vw;
+    }
+    .is-hidden-desktop {
+        display: none;
+    }
+
+    .is-hidden-mobile {
+        display: block;
+    }
+    .pet-mugs {
+        grid-template-columns: 1fr;
+    }
+    .section-text-size {
+        font-size: 6vw;
+    }
+
+    .mug-section-text-outer {
+        height: 400px;
+        display: flex;
+        align-items: center;
+    }
+}
