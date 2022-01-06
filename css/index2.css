@@ -1,7 +1,14 @@
-.body {
+body {
     font-family: montserrat;
     margin: 0;
-    background: #eeeff1;;
+}
+
+.light-font {
+    font-weight: 300;
+}
+
+.bold-font {
+    font-weight: 400;
 }
 
 .first-whole-photo {
@@ -22,11 +29,7 @@
 }
 
 .intro-text {
-    padding: 10%;
-}
-
-.section-text-size {
-    font-size: 3vw;
+    padding: 8%;
 }
 
 .pet-mugs-color {
@@ -71,6 +74,19 @@
     width: 80%;
 }
 
+.section-text-size {
+    font-size: 3vw;
+}
+
+.section-text-size-small {
+    font-size: 2.5vw;
+}
+
+.photo-small {
+    width: 60%;
+    margin: auto;
+}
+
 img {
     width: 100%;
 }
@@ -112,8 +128,13 @@ img {
     .section-text-photo {
         grid-template-columns: 1fr;
     }
+
     .section-text-size {
         font-size: 6vw;
+    }
+
+    .section-text-size-small {
+        font-size: 5vw;
     }
 
     .section-text-outer {
