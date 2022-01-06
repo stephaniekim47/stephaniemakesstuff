@@ -1,6 +1,7 @@
 .body {
     font-family: montserrat;
     margin: 0;
+    background: #eeeff1;;
 }
 
 .first-whole-photo {
@@ -48,14 +49,20 @@
     background: #f2b894;
 }
 
+.pink-color {
+    background: #e37a7a94;
+}
+
 .section-photo-text {
     display: grid;
     grid-template-columns: 40% 1fr;
+    border-top: solid 1px lightgrey;
 }
 
 .section-text-photo {
     display: grid;
     grid-template-columns: 1fr 40%;
+    border-top: solid 1px lightgrey;
 }
 
 .section-text-outer {
@@ -110,8 +117,8 @@ img {
     }
 
     .section-text-outer {
-        height: 200px;
         display: flex;
         align-items: center;
+        padding-bottom: 30px;
     }
 }
