@@ -1,5 +1,6 @@
 .body {
     font-family: montserrat;
+    margin: 0;
 }
 
 .first-whole-photo {
@@ -21,24 +22,43 @@
 
 .intro-text {
     padding: 10%;
-    background-color: #c2d5f4;
 }
 
 .section-text-size {
     font-size: 3vw;
 }
 
-.pet-mugs {
-    display: grid;
-    grid-template-columns: 40% 1fr;
+.pet-mugs-color {
     background: #ff8c8c;
 }
 
-.mug-pic {
-    width: 100%;
+.light-blue-color {
+    background: #c2d5f4;
 }
 
-.mug-section-text-outer {
+.green-color {
+    background: #d1dd93;
+}
+
+.purple-color {
+    background: #98a3f2;
+}
+
+.orange-color {
+    background: #f2b894;
+}
+
+.section-photo-text {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+}
+
+.section-text-photo {
+    display: grid;
+    grid-template-columns: 1fr 40%;
+}
+
+.section-text-outer {
     margin: auto;
     font-size: 3vw;
     width: 80%;
@@ -48,11 +68,11 @@ img {
     width: 100%;
 }
 
-.is-hidden-desktop {
-    display: auto;
+.show-in-desktop {
+    display: block;
 }
 
-.is-hidden-mobile {
+.show-in-mobile {
     display: none;
 }
 
@@ -72,22 +92,25 @@ img {
         right: 0%;
         font-size: 6vw;
     }
-    .is-hidden-desktop {
+    .show-in-desktop {
         display: none;
     }
 
-    .is-hidden-mobile {
+    .show-in-mobile {
         display: block;
     }
-    .pet-mugs {
+    .section-photo-text {
+        grid-template-columns: 1fr;
+    }
+    .section-text-photo {
         grid-template-columns: 1fr;
     }
     .section-text-size {
         font-size: 6vw;
     }
 
-    .mug-section-text-outer {
-        height: 400px;
+    .section-text-outer {
+        height: 200px;
         display: flex;
         align-items: center;
     }
