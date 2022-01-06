@@ -72,6 +72,7 @@ a:hover {
     transition-duration: .5s;
     text-align: center;
     opacity: 0.97;
+    z-index: 100;
 }
 
 .menu-wrapper.active {
