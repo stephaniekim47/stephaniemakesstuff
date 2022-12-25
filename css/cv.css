@@ -10,22 +10,11 @@
     height: inherit;
 }
 
-.object-pdf {
-    display:none;
-    height: 900px;
-    width: 800px;
-    margin: auto;
-}
-
 /* Mobile */
 @media only screen
     and (min-device-width: 320px)
     and (max-device-width: 568px) {
     .pdf-wrapper {
         height: 900px;
-        display: none;
-    }
-    .object-pdf {
-        display: block;
     }
 }
