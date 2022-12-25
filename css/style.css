@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: "Quicksand", sans-serif;
     background-color: #F5F4F0;
+    margin-bottom: 20px;
 }
 
 img {
@@ -72,6 +73,10 @@ a:hover {
     font-weight: 100;
 }
 
+.name a {
+    text-decoration: none;
+}
+
 .header-bar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -109,14 +114,14 @@ a:hover {
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 5px;
-    left: -50px;
-    display: grid;
+    top: 28px;
+    left: -60px;
     grid-template-rows: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
     transition-timing-function: cubic-bezier(0.51, -0.03, 0, 1.1);
     transition-duration: .5s;
+    display: none;
 }
 
 .menu-icon.rotate {
@@ -148,6 +153,10 @@ a:hover {
 
 .menu-wrapper.active {
     right: 0;
+}
+
+.artwork-sublinks {
+    display: none;
 }
 
 
@@ -184,6 +193,10 @@ a:hover {
         right: -80%;
     }
 
+    .menu-icon {
+        display: grid;
+    }
+
     .images-container {
         grid-template-columns: 1fr;
         width: 85%;
@@ -193,7 +206,7 @@ a:hover {
         font-size: 8vw;
     }
 
-    .menu-bar {
+    .header-bar {
         display: none;
     }
 }

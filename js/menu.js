@@ -9,4 +9,8 @@ $(document).ready(function(){
         $(".menu-wrapper").toggleClass("active");
         $(".menu").toggle();
     })
+    $(".artwork-menu-text").on("click", function () {
+        $(".artwork-sublinks").toggleClass("active");
+        $(".artwork-sublinks").toggle();
+    })
 });
