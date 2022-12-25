@@ -1,17 +1,23 @@
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: "Quicksand", sans-serif;
     background-color: #F5F4F0;
 }
 
 img {
     vertical-align: middle;
+    border-radius: 3px;
 }
 
 .header-icon {
     width: 40px;
     height: 40px;
 }
+
+.header-item:hover .drop-down-container {
+    display: block;
+}
+
 
 a {
     color: inherit; /* blue colors for links too */
@@ -22,17 +28,82 @@ a:hover {
     text-decoration: underline;
 }
 
+.drop-down-item {
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    background: #F5F4F0;
+    border: solid 1px #e2e1dc;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.drop-down-item:hover {
+}
+
+.drop-down-container {
+    display: none;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    list-style: none;
+    right: 0;
+    top: 14px;
+}
+
+.drop-down-container:hover {
+    display: grid;
+}
+
 .header {
     text-align: center;
     width: 100%;
-    height: 50px;
     border-bottom: solid 1px #e2e1dc;
     color: #483e27;
     display: grid;
     align-items: center;
     justify-items: center;
     font-size: 2vw;
+    font-weight: 300;
 }
+
+.name {
+    font-weight: 100;
+}
+
+.header-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-weight: 300;
+    padding-bottom: 20px;
+}
+
+.header-item {
+    font-size: 16px;
+    width: 11vw;
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.images-container-wrapper {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    align-items: center;
+    height: 600px;
+}
+
+.images-container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 75%;
+    grid-gap: 1rem;
+    padding: 20px;
+}
+
 
 .menu-icon {
     width: 40px;
@@ -111,6 +182,19 @@ a:hover {
     .menu-wrapper {
         width: 80%;
         right: -80%;
+    }
+
+    .images-container {
+        grid-template-columns: 1fr;
+        width: 85%;
+    }
+
+    .name {
+        font-size: 8vw;
+    }
+
+    .menu-bar {
+        display: none;
     }
 }
 
