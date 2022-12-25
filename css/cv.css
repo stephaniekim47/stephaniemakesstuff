@@ -10,11 +10,21 @@
     height: inherit;
 }
 
+.md {
+    margin: 20px;    
+    display: none;
+}
+
 /* Mobile */
 @media only screen
     and (min-device-width: 320px)
     and (max-device-width: 568px) {
     .pdf-wrapper {
         height: 900px;
+        display: none;
+    }
+
+    .md {
+        display: block;
     }
 }
