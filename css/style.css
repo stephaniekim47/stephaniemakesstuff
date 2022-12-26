@@ -114,8 +114,8 @@ a:hover {
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 28px;
-    left: -60px;
+    top: 20px;
+    left: -50px;
     grid-template-rows: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
@@ -191,7 +191,6 @@ a:hover {
     .menu-wrapper {
         width: 80%;
         right: -80%;
-        font-size: 7vw;
     }
 
     .menu-icon {
@@ -204,7 +203,7 @@ a:hover {
     }
 
     .name {
-        font-size: 10vw;
+        font-size: 7vw;
     }
 
     .header-bar {

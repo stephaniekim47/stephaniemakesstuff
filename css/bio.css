@@ -69,11 +69,20 @@
     }
 
     .text-box {
-        font-size: 30px;
         padding-top: 0;
     }
 
     .bio-image-wrapper {
-        padding-bottom: 0;
+        padding: 0px;
+        grid-template-columns: 1fr;
+    }
+    
+    .bio-image-mobile {
+        height: none;
+    }
+
+    .bio-image-mobile img {
+        width: 100%;
+        height: none;
     }
 }
