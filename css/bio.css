@@ -28,6 +28,14 @@
 }
 
 @media only screen
+    and (max-width: 1600px) {
+    .bio-image {
+        height: 500px;
+    }
+}
+
+
+@media only screen
     and (max-width: 1200px) {
     .me-drawing {
         display: none;
@@ -35,12 +43,8 @@
     .bio-wrapper {
         grid-template-columns: 1fr 1fr;
     }
-}
-
-@media only screen
-    and (max-width: 1600px) {
     .bio-image {
-        height: 600px;
+        height: 700px;
     }
 }
 
