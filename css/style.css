@@ -16,7 +16,7 @@ img {
 }
 
 .header-item:hover .drop-down-container {
-    display: block;
+    display: grid;
 }
 
 
@@ -35,11 +35,7 @@ a:hover {
     z-index: 10;
     background: #F5F4F0;
     border: solid 1px #e2e1dc;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.drop-down-item:hover {
+    padding: 10px;
 }
 
 .drop-down-container {
@@ -49,12 +45,8 @@ a:hover {
     position: absolute;
     width: 100%;
     list-style: none;
-    right: 0;
-    top: 14px;
-}
-
-.drop-down-container:hover {
-    display: grid;
+    right: 10px;
+    top: 10px;
 }
 
 .header {
@@ -65,7 +57,7 @@ a:hover {
     display: grid;
     align-items: center;
     justify-items: center;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: 300;
 }
 
