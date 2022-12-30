@@ -13,7 +13,6 @@
     background-color: #e2e1dc;
     grid-gap: 1px;
     align-items: stretch;
-    padding-top: 1px;
 }
 
 .cover-gallery {
@@ -62,6 +61,10 @@
 
 .smaller-width {
     width: 50% !important;
+}
+
+.hundred-width {
+    width: 100% !important;
 }
 
 photo-box.functional:empty {
@@ -153,7 +156,7 @@ photo-box.functional:empty {
 @media only screen
     and (max-width: 817px) {
     .gallery-title {
-        padding-left: 4%;
+        padding: 4%;
     }
 
 	.cover-gallery {
