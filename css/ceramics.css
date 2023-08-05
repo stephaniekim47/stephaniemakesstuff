@@ -10,7 +10,6 @@
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    background-color: #e2e1dc;
     grid-gap: 1px;
     align-items: stretch;
 }
@@ -19,14 +18,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 	text-align: center;
-}
-
-.cover-gallery-border {
-	border-right: 1px solid #e2e1dc;
-}
-
-.margin-bottom {
-    margin-bottom: 3%;
 }
 
 .cover-image {
@@ -49,7 +40,6 @@
 
 .photo-box {
     padding: 5%;
-    background-color: #F5F4F0;
     display: grid;
     align-items: center;
     justify-items: center;
