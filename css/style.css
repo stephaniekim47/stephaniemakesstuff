@@ -31,9 +31,9 @@ a:hover {
     width: 100%;
     text-align: center;
     z-index: 10;
-    background: #22A699;
     border: solid 1px #e2e1dc;
     padding: 10px;
+    background-color: white;
 }
 
 .drop-down-container {
@@ -50,7 +50,6 @@ a:hover {
 .header {
     text-align: center;
     width: 100%;
-    background-color: #22A699;
     display: grid;
     align-items: center;
     justify-items: center;

@@ -12,6 +12,7 @@
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 1px;
     align-items: stretch;
+    background-color: #e0e0e0;
 }
 
 .cover-gallery {
@@ -35,12 +36,7 @@
 }
 
 .gallery-wrapper {
-    background-color: #FF6D60;
     padding: 1%;
-}
-
-.gallery-wrapper-yellow-override {
-    background-color: #F7D060 !important;
 }
 
 .photo-box {
@@ -48,6 +44,7 @@
     display: grid;
     align-items: center;
     justify-items: center;
+    background-color: white;
 }
 
 .photo-box img {

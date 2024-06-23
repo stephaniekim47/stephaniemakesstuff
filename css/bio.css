@@ -1,7 +1,3 @@
-body {
-    background-color: #98D8AA;
-}
-
 .bio-wrapper {
     display: grid;
     grid-template-columns: 2fr 1fr;
