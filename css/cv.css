@@ -1,10 +1,17 @@
 .md {
     margin: auto;
-    width: 50%;
-    padding: 4%;
-    padding-top: 2%;
-    border: solid 1px #abaaa6;
+    width: 70%;
+    height: 80%;
     background-color: white;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.cv-link {
+    display: none;
 }
 
 /* Desktop */
@@ -26,6 +33,11 @@
         margin: 20px;
     }
     .md-wrapper {
-        background-color: white;
+	display: none;
+    }
+    .cv-link {
+	display: block;
+	text-align: center;
+    	font-size: x-large;
     }
 }
