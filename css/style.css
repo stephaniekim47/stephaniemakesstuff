@@ -1,11 +1,20 @@
 body {
     margin: 0;
     font-family: "Quicksand", sans-serif;
+    background-color: #c1e3da;
 }
 
 img {
     vertical-align: middle;
     border-radius: 3px;
+}
+
+.name {
+  font-family: "Bagel Fat One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: xxx-large;
+  color: #601ad9;
 }
 
 .header-icon {
@@ -31,9 +40,9 @@ a:hover {
     width: 100%;
     text-align: center;
     z-index: 10;
-    border: solid 1px #e2e1dc;
+    border: solid 1px #601ad9;
     padding: 10px;
-    background-color: white;
+    background-color: #c1e3da;
 }
 
 .drop-down-container {
@@ -55,10 +64,6 @@ a:hover {
     justify-items: center;
     font-size: 1.5vw;
     font-weight: 300;
-}
-
-.name {
-    font-weight: 100;
 }
 
 .name a {
