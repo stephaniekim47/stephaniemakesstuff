@@ -1,0 +1,99 @@
+
+
+.carousel-container {
+    margin: auto;
+    width: 100%;
+    position: relative;
+}
+.info {
+    position: absolute;
+    right: 5%;
+}
+
+.carousel {
+            position: relative;
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+        }
+        .carousel-track {
+            position: relative;
+            height: 600px;
+        }
+        .carousel-image {
+            display: none;
+            width: 100%;
+            height: 600px;
+            object-fit: contain;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .carousel-image.active {
+            display: block;
+        }
+        .carousel-btn {
+            background: rgba(255,255,255,0.7);
+            border: none;
+            font-size: 2rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 2;
+            padding: 0 12px;
+            border-radius: 50%;
+            user-select: none;
+        }
+        .carousel-btn.prev {left: -40px;}
+        .carousel-btn.next {right: -40px;}
+        .price {
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 10px;
+        }
+
+.mobile-carousel {
+    display: none; /* Hide mobile carousel by default */
+}
+
+@media only screen
+    and (max-width: 817px) {
+    .carousel-container {
+        display: none;
+    }
+    
+}
+
+.mobile-carousel.carousel-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 0.5rem;
+        }
+        .mobile-carousel.carousel-mobile-image {
+            flex: 0 0 100vw;
+            width: 100vw;
+            height: auto;
+            scroll-snap-align: center;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: box-shadow 0.2s;
+        }
+        .mobile-carousel.carousel-mobile-image.active {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        }
+        .mobile-carousel.carousel-btn {
+            display: none; /* Hide prev/next buttons for mobile scroll snap */
+        }
+        @media (min-width: 700px) {
+            .mobile-carousel.carousel-track {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .mobile-carousel.carousel-image {
+                max-width: 600px;
+            }
+        }
