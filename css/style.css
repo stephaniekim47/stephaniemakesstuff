@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: "Quicksand", sans-serif;
-    background-color: #c1e3da;
+    background-color: #fff4e5;
 }
 
 img {
@@ -42,7 +42,7 @@ a:hover {
     z-index: 10;
     border: solid 1px #601ad9;
     padding: 10px;
-    background-color: #c1e3da;
+    background-color: #fff4e5;
 }
 
 .drop-down-container {
