@@ -40,9 +40,14 @@ a:hover {
     width: 100%;
     text-align: center;
     z-index: 10;
-    border: solid 1px #601ad9;
+    border: solid 2px #601ad9;
+    border-bottom: none;
     padding: 10px;
     background-color: #fff4e5;
+}
+
+#portraits {
+    border: solid 2px #601ad9;
 }
 
 .drop-down-container {
