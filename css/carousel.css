@@ -9,15 +9,15 @@
 }
 .info {
     position: absolute;
-    right: 5%;
+    left: 60%;
 }
 
 .carousel {
             position: relative;
             max-width: 500px;
-            margin: auto;
             text-align: center;
             padding: 20px;
+            margin-left: 15%;
         }
         .carousel-track {
             position: relative;
@@ -62,7 +62,7 @@
 }
 
 @media only screen
-    and (max-width: 817px) {
+    and (max-width: 1050px) {
     .carousel-container {
         display: none;
     }
