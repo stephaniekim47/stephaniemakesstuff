@@ -1,9 +1,11 @@
 
-
+.carousel-section {
+    position: relative;
+    width: 100%;
+}
 .carousel-container {
     margin: auto;
     width: 100%;
-    position: relative;
 }
 .info {
     position: absolute;
@@ -56,6 +58,7 @@
 
 .mobile-carousel {
     display: none; /* Hide mobile carousel by default */
+    
 }
 
 @media only screen
@@ -63,37 +66,28 @@
     .carousel-container {
         display: none;
     }
-    
+    .mobile-carousel {
+        display: block;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        width: 100vw;
+        max-width: 100%;
+    }
+    .mobile-carousel-track {
+        display: flex;
+        gap: 8px;
+    }
+    .carousel-mobile-image {
+        flex: 0 0 95%;
+        width: 90vw;
+        height: auto;
+        object-fit: cover;
+        scroll-snap-align: start;
+        border-radius: 8px;
+    }
+    .info {
+        position: unset;
+        text-align: center;;
+    }
 }
-
-.mobile-carousel.carousel-track {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            gap: 0.5rem;
-        }
-        .mobile-carousel.carousel-mobile-image {
-            flex: 0 0 100vw;
-            width: 100vw;
-            height: auto;
-            scroll-snap-align: center;
-            object-fit: contain;
-            border-radius: 8px;
-            transition: box-shadow 0.2s;
-        }
-        .mobile-carousel.carousel-mobile-image.active {
-            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-        }
-        .mobile-carousel.carousel-btn {
-            display: none; /* Hide prev/next buttons for mobile scroll snap */
-        }
-        @media (min-width: 700px) {
-            .mobile-carousel.carousel-track {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            .mobile-carousel.carousel-image {
-                max-width: 600px;
-            }
-        }

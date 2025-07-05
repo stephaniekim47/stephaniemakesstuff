@@ -17,8 +17,8 @@ $(function() {
 document.addEventListener('DOMContentLoaded', function() {
             // Remove JS-based swipe logic, as scroll snap handles swiping natively.
             // Optionally, you can update the .active class on scroll for styling:
-            const carouselTrack = document.querySelector('.carousel-track');
-            const images = document.querySelectorAll('.carousel-image');
+            const carouselTrack = document.querySelector('.mobile-carousel-track');
+            const images = document.querySelectorAll('.mobile-carousel-image');
             function updateActiveImage() {
                 let minDiff = Infinity, activeIdx = 0;
                 images.forEach((img, i) => {
