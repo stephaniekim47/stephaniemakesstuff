@@ -21,7 +21,7 @@ const headerHTML = `
         </div>
     </div>
     <div class="header">
-        <h3 class="name"><a href="/">Stephanie Kim</a></h3>
+        <div class="name"><a href="/">Stephanie Kim</a></div>
         <div class="header-bar">
             <div class="header-item" id="artwork">ARTWORK
                 <ul class="drop-down-container">

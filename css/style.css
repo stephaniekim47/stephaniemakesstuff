@@ -15,6 +15,7 @@ img {
   font-style: normal;
   font-size: xxx-large;
   color: #601ad9;
+  padding: 10px;
 }
 
 .header-icon {
@@ -40,14 +41,14 @@ a:hover {
     width: 100%;
     text-align: center;
     z-index: 10;
-    border: solid 2px #601ad9;
+    border: solid 2px #967bb6;
     border-bottom: none;
     padding: 10px;
     background-color: #fff4e5;
 }
 
 #portraits {
-    border: solid 2px #601ad9;
+    border: solid 2px #967bb6;
 }
 
 .drop-down-container {

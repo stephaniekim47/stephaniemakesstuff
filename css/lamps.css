@@ -1,0 +1,44 @@
+a:hover {
+    text-decoration: none;
+}
+
+.detail-button {
+    border-style: solid;
+    border-color: #967bb6;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.detail-button:hover {
+    background-color: #ead8ff;
+}
+
+img {
+    border: 2px solid transparent;
+}
+
+img:hover {
+    border: 2px solid #967bb6;
+}
+
+.lamp-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.lamp-price {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Mobile */
+@media only screen
+    and (min-device-width: 320px)
+    and (max-device-width: 568px) {
+    .gallery {
+        grid-template-columns: 1fr !important;
+    }
+}
