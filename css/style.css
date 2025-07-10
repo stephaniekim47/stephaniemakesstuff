@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: "Quicksand", sans-serif;
-    background-color: #fff4e5;
+    background-color: #f5f1e6;
 }
 
 img {
@@ -14,7 +14,7 @@ img {
   font-weight: 400;
   font-style: normal;
   font-size: xxx-large;
-  color: #601ad9;
+  color: #fda9a9;
   padding: 10px;
 }
 
@@ -41,14 +41,14 @@ a:hover {
     width: 100%;
     text-align: center;
     z-index: 10;
-    border: solid 2px #967bb6;
+    border: solid 2px #fda9a9;
     border-bottom: none;
     padding: 10px;
-    background-color: #fff4e5;
+    background-color: #f5f1e6;
 }
 
 #portraits {
-    border: solid 2px #967bb6;
+    border: solid 2px #fda9a9;
 }
 
 .drop-down-container {
