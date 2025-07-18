@@ -13,6 +13,7 @@ const headerHTML = `
                 <h4><a href="${rootPath}/exhibits">EXHIBITS</a></h4>
                 <h4><a href="${rootPath}/sculptural">SCULPTURAL</a></h4>
                 <h4><a href="${rootPath}/functional">FUNCTIONAL</a></h4>
+                <h4><a href="${rootPath}/lamps">LAMPS</a></h4>
                 <h4><a href="${rootPath}/petportraits">PET PORTRAITS</a></h4>
             </div>
             <h3><a class="menu-text" href="${rootPath}/bio">BIO</a></h3>
@@ -28,6 +29,7 @@ const headerHTML = `
                     <li class="drop-down-item"><a href="${rootPath}/exhibits">EXHIBITS</a></l>
                         <li class="drop-down-item"><a href="${rootPath}/sculptural">SCULPTURAL</a></li>
                         <li class="drop-down-item"><a href="${rootPath}/functional">FUNCTIONAL</a></li>
+                         <li class="drop-down-item"><a href="${rootPath}/lamps">LAMPS</a></li>
                         <li id="portraits" class="drop-down-item"><a href=
                                 "${rootPath}/petportraits">PET PORTRAITS</a></li>
                 </ul>
