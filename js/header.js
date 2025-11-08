@@ -17,6 +17,7 @@ const headerHTML = `
                 <h4><a href="${rootPath}/petportraits">PET PORTRAITS</a></h4>
             </div>
             <h3><a class="menu-text" href="${rootPath}/bio">BIO</a></h3>
+            <h3><a class="menu-text" href="${rootPath}/artist_statement">ARTIST STATEMENT</a></h3>
             <h3><a class="menu-text" href="${rootPath}/cv">CV</a></h3>
             <h3><a class="menu-text" href="${rootPath}/contact">CONTACT</a></h3>
         </div>
@@ -35,6 +36,7 @@ const headerHTML = `
                 </ul>
             </div>
             <div class="header-item"><a href="${rootPath}/bio">BIO</a></div>
+            <div class="header-item"><a href="${rootPath}/artist_statement">ARTIST STATEMENT</a></div>
             <div class="header-item"><a href="${rootPath}/cv">CV</a></div>
             <div class="header-item"><a href="${rootPath}/contact">CONTACT</a></div>
         </div>

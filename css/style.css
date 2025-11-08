@@ -78,7 +78,7 @@ a:hover {
 
 .header-bar {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     font-weight: 300;
     padding-bottom: 20px;
 }
