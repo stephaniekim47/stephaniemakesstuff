@@ -37,6 +37,23 @@ a:hover {
     text-decoration: underline;
 }
 
+.page-title {
+    font-size: 2vw;
+    color: #1f1c23;
+    font-weight: 100;
+    margin: 0;
+    padding-left: 2%;
+}
+
+/* one column */
+@media only screen
+    and (max-width: 817px) {
+    .page-title {
+        padding: 4%;
+        font-size: 6vw;
+    }
+}
+
 .drop-down-item {
     width: 100%;
     text-align: center;
