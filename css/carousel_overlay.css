@@ -1,42 +1,69 @@
 /* Modal styles */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 200; /* Sit on top */
-    /* REMOVE: padding-top: 60px; */ /* We'll use flexbox for centering */
+    display: none;
+    position: fixed;
+    z-index: 200;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-
-    /* ADD these Flexbox properties for centering */
-    display: flex; /* Make the modal a flex container */
-    align-items: center; /* Vertically center the content */
-    justify-content: center; /* Horizontally center the content */
-    flex-direction: column; /* Stack image and caption vertically */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Crucial: hide overflowing images */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
 }
 
-/* Initially hide the modal content so it doesn't flash before JS shows it */
+/* New CSS class to explicitly enable flexbox and centering when needed */
+.modal.is-open {
+    display: flex; /* Only apply flexbox when modal is open */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .modal.hidden {
     display: none;
 }
 
-
-/* Modal Content (image) */
-.modal-content {
-    width: 80%;
-    max-width: 700px;
-    border-radius: 8px;
-    height: auto; /* Ensure image scales proportionally */
-    max-height: 80vh; /* Limit max height to viewport height */
-    object-fit: contain; /* Ensure the image fits within its bounds without cropping */
+/* New: Wrapper for the swipable images */
+.modal-content-wrapper {
+    width: 100%; /* Take full width of modal */
+    overflow: hidden; /* Hide parts of images not in view */
+    display: flex; /* Use flexbox to center the track */
+    justify-content: center; /* Horizontally center the image track */
+    align-items: center; /* Vertically center if wrapper has extra height */
+    flex-grow: 1; /* Allow wrapper to take available vertical space */
 }
 
-/* Add Animation - Zoom in the modal */
-.modal-content, {
+/* New: Track that holds the previous, current, and next images */
+.modal-image-track {
+    display: flex; /* Arrange images side-by-side */
+    justify-content: center;
+    width: 300%; /* Three images, each taking 100% of the viewport width */
+    height: 100%; /* Take full height of wrapper */
+    /* REMOVE: transform: translateX(-33.33%); */ /* We will set this dynamically via JS */
+    /* Add a default transform to explicitly target the middle image */
+    transform: translateX(0); /* Default to 0, JS will set the correct initial for current */
+    transition: transform 0.3s ease-out; /* Smooth transition for snap-back/navigation */
+}
+
+.modal-image-track.no-transition {
+    transition: none; /* For immediate snapping when loading new images */
+}
+
+/* Modal Content (individual images within the track) */
+.modal-content {
+    flex-shrink: 0; /* Prevent images from shrinking */
+    width: 33.33%; /* Each image takes one third of the track's width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 80vh; /* Limit max height to viewport height */
+    object-fit: contain; /* Ensure image fits within its bounds without cropping */
+    margin: 0; /* Reset any default margins */
+    padding: 0 10px; /* Add some padding between images visually if desired */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Add Animation - Zoom in the modal (only for the initial open) */
+.modal.hidden ~ .modal-content-wrapper { /* Apply zoom to wrapper when modal is first shown */
     animation-name: zoom;
     animation-duration: 0.6s;
 }
@@ -55,7 +82,7 @@
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
-    z-index: 2; /* Ensure close button is above other modal content */
+    z-index: 2;
 }
 
 .close:hover,
@@ -70,19 +97,18 @@
     cursor: pointer;
     position: absolute;
     top: 50%;
+    transform: translateY(-50%);
     width: auto;
     padding: 16px;
     color: white;
-    transform: translateY(-50%); /* This is the crucial addition for perfect vertical centering */
     font-weight: bold;
     font-size: 20px;
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
     -webkit-user-select: none;
-    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
-    z-index: 2; /* Ensure navigation buttons are above other modal content */
-    align-self: center; /* Aligns to the center of the cross-axis (middle) */
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
 }
 
 /* Position the "next button" to the right */
@@ -91,7 +117,7 @@
     border-radius: 3px 0 0 3px;
 }
 
-/* Position the "next button" to the left */
+/* Position the "prev button" to the left */
 .prev {
     left: 0;
     border-radius: 3px 0 0 3px;
@@ -102,15 +128,24 @@
     background-color: rgba(0,0,0,0.8);
 }
 
-/* 100% Image Width on Smaller Screens (and ensure vertical centering) */
+/* Media queries for smaller screens */
 @media only screen and (max-width: 700px){
     .modal-content {
-        width: 90%; /* Give a little more margin on very small screens */
-        max-height: 75vh; /* Adjust max height for smaller screens if needed */
+        width: 100vw; /* Take full viewport width */
+        padding: 0 5px; /* Adjust padding for smaller screens */
+    }
+    .modal-image-track {
+        /*
+          The width of the track should be 3 times the viewport width
+          when each image takes 100vw.
+          Initial transform should center the middle image.
+        */
+        width: 300vw;
+        transform: translateX(0);
+        align-items: center;
     }
     .prev, .next {
-        font-size: 16px; /* Smaller arrows on mobile */
+        font-size: 16px;
         padding: 10px;
-        margin-top: -30px; /* Adjust vertical position for smaller arrows */
     }
 }
