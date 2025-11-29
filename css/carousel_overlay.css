@@ -1,0 +1,116 @@
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 200; /* Sit on top */
+    /* REMOVE: padding-top: 60px; */ /* We'll use flexbox for centering */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+
+    /* ADD these Flexbox properties for centering */
+    display: flex; /* Make the modal a flex container */
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    flex-direction: column; /* Stack image and caption vertically */
+}
+
+/* Initially hide the modal content so it doesn't flash before JS shows it */
+.modal.hidden {
+    display: none;
+}
+
+
+/* Modal Content (image) */
+.modal-content {
+    width: 80%;
+    max-width: 700px;
+    border-radius: 8px;
+    height: auto; /* Ensure image scales proportionally */
+    max-height: 80vh; /* Limit max height to viewport height */
+    object-fit: contain; /* Ensure the image fits within its bounds without cropping */
+}
+
+/* Add Animation - Zoom in the modal */
+.modal-content, {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 2; /* Ensure close button is above other modal content */
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* The navigation buttons (prev/next) */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    transform: translateY(-50%); /* This is the crucial addition for perfect vertical centering */
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+    z-index: 2; /* Ensure navigation buttons are above other modal content */
+    align-self: center; /* Aligns to the center of the cross-axis (middle) */
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Position the "next button" to the left */
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background with a little more opacity */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* 100% Image Width on Smaller Screens (and ensure vertical centering) */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 90%; /* Give a little more margin on very small screens */
+        max-height: 75vh; /* Adjust max height for smaller screens if needed */
+    }
+    .prev, .next {
+        font-size: 16px; /* Smaller arrows on mobile */
+        padding: 10px;
+        margin-top: -30px; /* Adjust vertical position for smaller arrows */
+    }
+}
