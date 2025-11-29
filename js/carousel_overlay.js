@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     var prevBtn = document.querySelector(".prev");
     var nextBtn = document.querySelector(".next");
 
+    // Variables for swipe detection
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50; // Minimum pixels to qualify as a swipe
+
     function updateModalContent(index) {
         if (index < 0) {
             currentIndex = galleryImages.length - 1;
