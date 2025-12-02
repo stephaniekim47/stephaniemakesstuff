@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     var imgPrev = document.getElementById("img-prev");
     var imgCurrent = document.getElementById("img-current");
     var imgNext = document.getElementById("img-next");
+    
+    var nextIndex = 0;
 
     let touchStartX = 0;
     let touchMoveX = 0;
@@ -70,17 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset track position to show current image in the middle
         const initialTransform = getInitialTrackTransformValue();
         const isPercentage = window.innerWidth > 700;
+        imageTrack.classList.add('no-transition');
         applyTrackTransform(initialTransform, isPercentage);
     }
 
-    function navigate(direction) {
-        // Disable transition before updating images to avoid flicker while setting new image
-        imageTrack.classList.add('no-transition');
+    imageTrack.addEventListener('transitionend', (e) => {
+        loadTrackImages(nextIndex);
+    });
 
+
+    function navigate(direction) {
+        const isPercentageMode = window.innerWidth > 700;
         if (direction === 'prev') {
-            loadTrackImages((currentIndex - 1 + galleryImages.length) % galleryImages.length);
+            nextIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length
+            applyTrackTransform(window.innerWidth, isPercentageMode);
         } else { // 'next'
-            loadTrackImages((currentIndex + 1) % galleryImages.length);
+            nextIndex = (currentIndex + 1 + galleryImages.length) % galleryImages.length
+            applyTrackTransform(-window.innerWidth, isPercentageMode);
         }
 
         // Re-enable transition after a short delay so subsequent swipes/resets are animated

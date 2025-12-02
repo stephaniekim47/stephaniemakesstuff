@@ -40,8 +40,6 @@
     justify-content: center;
     width: 300%; /* Three images, each taking 100% of the viewport width */
     height: 100%; /* Take full height of wrapper */
-    /* REMOVE: transform: translateX(-33.33%); */ /* We will set this dynamically via JS */
-    /* Add a default transform to explicitly target the middle image */
     transform: translateX(0); /* Default to 0, JS will set the correct initial for current */
     transition: transform 0.3s ease-out; /* Smooth transition for snap-back/navigation */
 }
