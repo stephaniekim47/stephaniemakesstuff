@@ -76,9 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTrackTransform(initialTransform, isPercentage);
     }
 
-    imageTrack.addEventListener('transitionend', (e) => {
-        loadTrackImages(nextIndex);
-    });
+    if (window.innerWidth < 700) {
+        imageTrack.addEventListener('transitionend', (e) => {
+                loadTrackImages(nextIndex);
+        });
+    }
 
 
     function navigate(direction) {
@@ -89,6 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else { // 'next'
             nextIndex = (currentIndex + 1 + galleryImages.length) % galleryImages.length
             applyTrackTransform(-window.innerWidth, isPercentageMode);
+        }
+        if (isPercentageMode) {
+            loadTrackImages(nextIndex); // This will load images and set initial transform
         }
 
         // Re-enable transition after a short delay so subsequent swipes/resets are animated
