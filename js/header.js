@@ -1,4 +1,4 @@
-const rootPath = window.location.origin
+const rootPath = window.location.origin;
 
 const headerHTML = `
     <div class="menu-wrapper">

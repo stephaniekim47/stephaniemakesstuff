@@ -1,94 +1,95 @@
-
 .carousel-section {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 .carousel-container {
-    margin: auto;
-    width: 100%;
+  margin: auto;
+  width: 100%;
 }
 .info {
-    position: absolute;
-    left: 60%;
+  position: absolute;
+  left: 60%;
 }
 
 .carousel {
-            position: relative;
-            max-width: 500px;
-            text-align: center;
-            padding: 20px;
-            margin-left: 15%;
-        }
-        .carousel-track {
-            position: relative;
-            height: 800px;
-        }
-        .carousel-image {
-            display: none;
-            width: 100%;
-            height: 800px;
-            object-fit: contain;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .carousel-image.active {
-            display: block;
-        }
-        .carousel-btn {
-            background: rgba(255,255,255,0.7);
-            border: none;
-            font-size: 2rem;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            z-index: 2;
-            padding: 0 12px;
-            border-radius: 50%;
-            user-select: none;
-        }
-        .carousel-btn.prev {left: -40px;}
-        .carousel-btn.next {right: -40px;}
-        .price {
-            font-size: 1.5rem;
-            color: #333;
-            margin-top: 10px;
-        }
-
-.mobile-carousel {
-    display: none; /* Hide mobile carousel by default */
-    
+  position: relative;
+  max-width: 500px;
+  text-align: center;
+  padding: 20px;
+  margin-left: 15%;
+}
+.carousel-track {
+  position: relative;
+  height: 800px;
+}
+.carousel-image {
+  display: none;
+  width: 100%;
+  height: 800px;
+  object-fit: contain;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.carousel-image.active {
+  display: block;
+}
+.carousel-btn {
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+  padding: 0 12px;
+  border-radius: 50%;
+  user-select: none;
+}
+.carousel-btn.prev {
+  left: -40px;
+}
+.carousel-btn.next {
+  right: -40px;
+}
+.price {
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 10px;
 }
 
-@media only screen
-    and (max-width: 1050px) {
-    .carousel-container {
-        display: none;
-    }
-    .mobile-carousel {
-        display: block;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        width: 100vw;
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-    .mobile-carousel-track {
-        display: flex;
-        gap: 8px;
-    }
-    .carousel-mobile-image {
-        flex: 0 0 95%;
-        width: 90vw;
-        height: auto;
-        object-fit: cover;
-        scroll-snap-align: start;
-        border-radius: 8px;
-    }
-    .info {
-        position: unset;
-        text-align: center;;
-    }
+.mobile-carousel {
+  display: none; /* Hide mobile carousel by default */
+}
+
+@media only screen and (max-width: 1050px) {
+  .carousel-container {
+    display: none;
+  }
+  .mobile-carousel {
+    display: block;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100vw;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  .mobile-carousel-track {
+    display: flex;
+    gap: 8px;
+  }
+  .carousel-mobile-image {
+    flex: 0 0 95%;
+    width: 90vw;
+    height: auto;
+    object-fit: cover;
+    scroll-snap-align: start;
+    border-radius: 8px;
+  }
+  .info {
+    position: unset;
+    text-align: center;
+  }
 }

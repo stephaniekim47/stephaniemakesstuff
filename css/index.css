@@ -1,78 +1,69 @@
 .section {
-	text-align: center;
-	position: relative;
-    height: 50vh;
+  text-align: center;
+  position: relative;
+  height: 50vh;
 }
 
 .section-text {
-	position: absolute;
-    bottom: 0;
-    right: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
 }
 
 h2 {
-    font-size: 6vw;
-    color: white;
-    font-weight: 100;
-    margin: 0;
+  font-size: 6vw;
+  color: white;
+  font-weight: 100;
+  margin: 0;
 }
 
 .dev {
-    background-color: #1eb19d;
+  background-color: #1eb19d;
 }
 
 .dev-girl-pic {
-    width: 160px;
-    max-width: 300px;
+  width: 160px;
+  max-width: 300px;
 }
 
 .ceramics {
-    background-color: #f3d430;	
+  background-color: #f3d430;
 }
 
-
 .mug-pic {
-	width: 280px;
+  width: 280px;
 }
 
 .food {
-    background-color: #f36e27;
+  background-color: #f36e27;
 }
 
 .bibimbap {
-    width: 200px;
+  width: 200px;
 }
 
 .icon {
-    left: 50%;
-    transform: translate(-50%, 0);
-    position: absolute;
-    bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: absolute;
+  bottom: 0;
 }
-
 
 /* Portrait mobile*/
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  h2 {
+    font-size: 8vw;
+  }
 
-    h2 {
-       font-size: 8vw; 
-    }
+  .mug-pic {
+    width: 50vw;
+  }
 
-    .mug-pic {
-        width: 50vw;
-    }
+  .dev-girl-pic {
+    width: 30vw;
+  }
 
-    .dev-girl-pic {
-        width: 30vw;
-    }
-
-    .section {
-        height: 80vh;
-    }
+  .section {
+    height: 80vh;
+  }
 }
-
-
