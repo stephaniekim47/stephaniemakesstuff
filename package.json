@@ -1,5 +1,14 @@
 {
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "3.7.4"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "prepare": "husky"
   }
 }
