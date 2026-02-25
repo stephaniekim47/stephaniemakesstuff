@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #fdfdfd;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let myFont;
+      let knownTable, unknownTable;
+      let knownWords = [];
+      let unknownWords = [];
+      let words = [];
+
+      const TOTAL_WORDS = 30;
+      const KNOWN_PERC = 0.3;
+
+      // --- STEP 1: PRELOAD ASSETS ---
+      function preload() {
+        // Make sure these paths match your website folder structure exactly
+        myFont = loadFont("noto_font.ttf");
+        knownTable = loadTable("krn_words/known.csv", "csv");
+        unknownTable = loadTable("krn_words/unknown.csv", "csv");
+      }
+
+      // --- STEP 2: SETUP DATA ---
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        textFont(myFont);
+        textSize(30);
+
+        // Get the very first row of the table
+        let kRow = knownTable.getRow(0);
+        let uRow = unknownTable.getRow(0);
+
+        // Use the TABLE's column count to loop through the row
+        if (kRow) {
+          for (let c = 0; c < knownTable.getColumnCount(); c++) {
+            let val = kRow.getString(c);
+            if (val && val.trim() !== "") knownWords.push(val.trim());
+          }
+        }
+
+        if (uRow) {
+          for (let c = 0; c < unknownTable.getColumnCount(); c++) {
+            let val = uRow.getString(c);
+            if (val && val.trim() !== "") unknownWords.push(val.trim());
+          }
+        }
+
+        textFont(myFont);
+        for (let i = 0; i < TOTAL_WORDS; i++) {
+          words.push(new WordQueue());
+        }
+      }
+
+      // --- STEP 3: THE ANIMATION LOOP ---
+      function draw() {
+        background(40); // Light gray background
+
+        let haloRadius = 50; // Radius of the cursor halo
+        for (let i = 0; i < words.length; i++) {
+          let w = words[i];
+          w.move();
+          w.display();
+
+          // Check for collisions against other words
+          for (let j = i + 1; j < words.length; j++) {
+            let other = words[j];
+            if (w.collide(other)) {
+              w.bounce();
+              other.bounce();
+              w.nextWord();
+              other.nextWord();
+            }
+          }
+
+          // Cursor Collision
+          let d = dist(mouseX, mouseY, w.pos.x + w.w / 2, w.pos.y - w.h / 2);
+          if (d < 50) {
+            // 50 is the "push" radius
+            w.bounce();
+            w.nextWord(); // Optional: Change word when touched by mouse
+
+            // Anti-stuck: Push the word slightly away from the mouse
+            let pushDir = createVector(w.pos.x - mouseX, w.pos.y - mouseY);
+            pushDir.normalize();
+            w.pos.add(pushDir.mult(5));
+          }
+        }
+
+        noFill();
+      }
+
+      // --- STEP 4: DEFINE THE LOGIC CLASS ---
+      class WordQueue {
+        constructor() {
+          this.pos = createVector(random(width), random(height));
+          this.vel = p5.Vector.random2D().mult(random(1, 3));
+          this.nextWord(); // Initialize with a random wor
+        }
+
+        updateContent() {
+          // Safety check: If arrays are empty, use fallback text
+          let kList = knownWords.length > 0 ? knownWords : ["Known"];
+          let uList = unknownWords.length > 0 ? unknownWords : ["Unknown"];
+
+          this.isKnown = random() < KNOWN_PERC;
+
+          // Pick a truly random index from the appropriate list
+          if (this.isKnown) {
+            this.txt = random(kList);
+          } else {
+            this.txt = random(uList);
+          }
+
+          this.w = textWidth(this.txt);
+          this.h = 30; // Height based on your textSize(30)
+        }
+
+        magnitude() {
+          return sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y);
+        }
+
+        move() {
+          this.pos.add(this.vel);
+
+          // X-axis (Left and Right)
+          if (this.pos.x < 0) {
+            this.pos.x = 0; // Snap back to edge
+            this.vel.x *= -1;
+          } else if (this.pos.x + this.w > width) {
+            this.pos.x = width - this.w; // Snap back to edge
+            this.vel.x *= -1;
+          }
+
+          // Y-axis (Top and Bottom)
+          // Note: this.h is used to prevent words from going off the top
+          if (this.pos.y < this.h) {
+            this.pos.y = this.h;
+            this.vel.y *= -1;
+          } else if (this.pos.y > height) {
+            this.pos.y = height;
+            this.vel.y *= -1;
+          }
+        }
+
+        display() {
+          fill(this.isKnown ? [0, 150, 0] : [200, 0, 0]); // Green or Red
+          text(this.txt, this.pos.x, this.pos.y);
+        }
+
+        collide(other) {
+          // Simple rectangular collision check
+          return (
+            this.pos.x < other.pos.x + other.w &&
+            this.pos.x + this.w > other.pos.x &&
+            this.pos.y < other.pos.y + other.h &&
+            this.pos.y + this.h > other.pos.y
+          );
+        }
+
+        bounce() {
+          // Reverse direction
+          this.vel.x *= -1;
+          this.vel.y *= -1;
+
+          // Add a tiny bit of random variation so it doesn't get stuck in a loop
+          this.vel.rotate(random(-0.1, 0.1));
+        }
+
+        nextWord() {
+          this.updateContent();
+        }
+      }
+
+      // Handle window resizing automatically
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+      }
+    </script>
+  </body>
+</html>
