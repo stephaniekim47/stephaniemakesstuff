@@ -77,6 +77,17 @@
             if (w.collide(other)) {
               w.bounce();
               other.bounce();
+
+              // 2. THE FIqX: Static Separation
+              // Calculate the vector between the two words
+              let pushVec = p5.Vector.sub(w.pos, other.pos);
+              pushVec.normalize();
+
+              // Move them slightly away from each other immediately
+              // This prevents them from being "stuck" inside each other
+              w.pos.add(pushVec.mult(2));
+              other.pos.sub(pushVec.mult(2));
+
               w.nextWord();
               other.nextWord();
             }
