@@ -65,7 +65,11 @@
       function draw() {
         background(40); // Light gray background
 
-        let haloRadius = 50; // Radius of the cursor halo
+        for (let i = 0; i < 100; i++) {
+          stroke(200, 200, 200, 20); // Very faint "glaze particles"
+          point(random(width), random(height));
+        }
+
         for (let i = 0; i < words.length; i++) {
           let w = words[i];
           w.move();
@@ -164,8 +168,18 @@
         }
 
         display() {
-          fill(this.isKnown ? [0, 150, 0] : [200, 0, 0]); // Green or Red
+          // Add a faint shadow to make it look like it's floating in liquid
+          drawingContext.shadowBlur = 30;
+          drawingContext.shadowColor = this.isKnown
+            ? color(0, 255, 0, 200)
+            : color(255, 0, 0, 200);
+
+          fill(this.isKnown ? [100, 255, 100] : [255, 100, 100]);
+          noStroke();
           text(this.txt, this.pos.x, this.pos.y);
+
+          // Reset shadow so it doesn't affect the particles
+          drawingContext.shadowBlur = 0;
         }
 
         collide(other) {
