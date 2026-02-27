@@ -204,28 +204,33 @@
         }
 
         display() {
-          // IMPORTANT: We draw the text from the HTML element,
-          // NOT the original variable. This way, if Chrome
-          // translates the element, the canvas updates too!
-          let displayedText = this.element.elt.innerText;
+          // 1. Try to get the translated text from the HTML element
+          let translated = this.element.elt.innerText;
 
-          // Define our colors
+          // 2. Fallback: If 'translated' is empty or null, use the original word
+          // This prevents the word (and its glow) from disappearing
+          let displayedText =
+            translated && translated.trim() !== "" ? translated : this.txt;
+
+          // 3. Draw the glow and text
+          push();
+
+          // Your glow logic
           let finalColor = this.isKnown
             ? color(100, 255, 100)
             : color(255, 100, 100);
-          let birthColor = color(255, 255, 150); // Bright yellowish "Fresh Ingredient" glow
-
-          // Linearly interpolate (lerp) between the birth color and the final color
-          // Based on the current glow value
+          let birthColor = color(255, 255, 150);
           let currentColor = lerpColor(finalColor, birthColor, this.glow);
 
-          // Apply glow effect based on the fade amount
-          drawingContext.shadowBlur = this.glow * 30; // Stronger glow when new
+          drawingContext.shadowBlur = this.glow * 30 + 10; // Keep a base glow of 10
           drawingContext.shadowColor = currentColor;
 
           fill(currentColor);
           noStroke();
+          textAlign(CENTER, CENTER);
           text(displayedText, this.pos.x, this.pos.y);
+
+          pop();
 
           // Slowly fade the glow effect every frame
           if (this.glow > 0) {
