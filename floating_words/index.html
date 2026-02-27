@@ -97,8 +97,8 @@
           let d = dist(mouseX, mouseY, w.pos.x + w.w / 2, w.pos.y - w.h / 2);
           if (d < 50) {
             // 50 is the "push" radius
-            w.bounce();
-            w.nextWord(); // Optional: Change word when touched by mouse
+            w.bounce((from_cursor = true));
+            w.nextWord();
 
             // Anti-stuck: Push the word slightly away from the mouse
             let pushDir = createVector(w.pos.x - mouseX, w.pos.y - mouseY);
@@ -178,10 +178,21 @@
           );
         }
 
-        bounce() {
+        bounce(from_cursor = false) {
           // Reverse direction
           this.vel.x *= -1;
           this.vel.y *= -1;
+
+          if (from_cursor) {
+            this.vel.x *= 1.2;
+            this.vel.y *= 1.2;
+          } else {
+            // Apply viscosity to slow down over time
+            if (this.magnitude() > 3) {
+              // Only apply if it's moving fast enough
+              this.vel.mult(0.9);
+            }
+          }
 
           // Add a tiny bit of random variation so it doesn't get stuck in a loop
           this.vel.rotate(random(-0.1, 0.1));
