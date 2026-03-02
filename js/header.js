@@ -42,7 +42,7 @@ const headerHTML = `
             </div>
             <div class="header-item" id="other">OTHER WORKS
                 <ul class="drop-down-container">
-                    <li class="drop-down-item"><a href="${rootPath}/floating_words" target="_blank" rel="noopener noreferrer">FLOATING_WORDS</a></l>
+                    <li class="drop-down-item"><a href="${rootPath}/floating_words" target="_blank" rel="noopener noreferrer">FLOATING WORDS</a></l>
                     <li id="last-drop-down-item" class="drop-down-item"><a href="https://stephaniekim47.substack.com/">WRITING</a></li>
                 </ul>
             </div>
