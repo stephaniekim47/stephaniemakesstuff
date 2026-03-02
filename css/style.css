@@ -62,7 +62,7 @@ a:hover {
   background-color: #f5f1e6;
 }
 
-#portraits {
+#last-drop-down-item {
   border: solid 2px #fda9a9;
 }
 
@@ -93,7 +93,7 @@ a:hover {
 
 .header-bar {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   font-weight: 300;
   padding-bottom: 20px;
 }
@@ -169,6 +169,10 @@ a:hover {
 }
 
 .artwork-sublinks {
+  display: none;
+}
+
+.other-works-links {
   display: none;
 }
 

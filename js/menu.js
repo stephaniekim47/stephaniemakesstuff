@@ -13,4 +13,8 @@ $(document).ready(function () {
     $(".artwork-sublinks").toggleClass("active");
     $(".artwork-sublinks").toggle();
   });
+  $(".other-works-menu-text").on("click", function () {
+    $(".other-works-links").toggleClass("active");
+    $(".other-works-links").toggle();
+  });
 });

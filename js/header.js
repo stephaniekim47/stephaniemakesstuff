@@ -16,6 +16,11 @@ const headerHTML = `
                 <h4><a href="${rootPath}/lamps">LAMPS</a></h4>
                 <h4><a href="${rootPath}/petportraits">PET PORTRAITS</a></h4>
             </div>
+            <h3 class="other-works-menu-text">OTHER WORKS ▾</h3>
+            <div class="other-works-links">
+                <h4><a href="${rootPath}/floating_words" target="_blank" rel="noopener noreferrer">FLOATING WORDS</a></h4>
+                <h4><a href="https://stephaniekim47.substack.com/">WRITING</a></h4>
+            </div>
             <h3><a class="menu-text" href="${rootPath}/bio">BIO</a></h3>
             <h3><a class="menu-text" href="${rootPath}/artist_statement">ARTIST STATEMENT</a></h3>
             <h3><a class="menu-text" href="${rootPath}/cv">CV</a></h3>
@@ -30,9 +35,15 @@ const headerHTML = `
                     <li class="drop-down-item"><a href="${rootPath}/exhibits">EXHIBITS</a></l>
                         <li class="drop-down-item"><a href="${rootPath}/sculptural">SCULPTURAL</a></li>
                         <li class="drop-down-item"><a href="${rootPath}/functional">FUNCTIONAL</a></li>
-                         <li class="drop-down-item"><a href="${rootPath}/lamps">LAMPS</a></li>
-                        <li id="portraits" class="drop-down-item"><a href=
+                        <li class="drop-down-item"><a href="${rootPath}/lamps">LAMPS</a></li>
+                        <li id="last-drop-down-item" class="drop-down-item"><a href=
                                 "${rootPath}/petportraits">PET PORTRAITS</a></li>
+                </ul>
+            </div>
+            <div class="header-item" id="other">OTHER WORKS
+                <ul class="drop-down-container">
+                    <li class="drop-down-item"><a href="${rootPath}/floating_words" target="_blank" rel="noopener noreferrer">FLOATING_WORDS</a></l>
+                    <li id="last-drop-down-item" class="drop-down-item"><a href="https://stephaniekim47.substack.com/">WRITING</a></li>
                 </ul>
             </div>
             <div class="header-item"><a href="${rootPath}/bio">BIO</a></div>
