@@ -49,6 +49,57 @@
   cursor: pointer;
 }
 
+/* 1. Make sure the container allows absolute positioning inside it */
+.photo-box.video-item {
+  position: relative;
+}
+
+/* 2. Create the glass-like translucent outer circle */
+.photo-box.video-item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 65px;
+  height: 65px;
+  background: rgba(255, 255, 255, 0.25); /* Translucent white glass */
+  backdrop-filter: blur(4px); /* Modern frosted glass effect */
+  border: 2px solid #4e4e4e;
+  border-radius: 50%;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+
+  /* CRITICAL: This ensures clicking the play button passes right through to the image */
+  pointer-events: none;
+}
+
+/* 3. Draw the white play triangle using clever border geometry */
+.photo-box.video-item::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 51%; /* 53% instead of 50% optically centers a triangle's weight */
+  transform: translate(-50%, -50%) scale(1);
+  border-style: solid;
+  border-width: 12px 0 12px 20px; /* Dictates the triangle size */
+  border-color: transparent transparent transparent #4e4e4e; /* Triangle points right */
+  z-index: 3;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+/* 4. Smooth hover animations */
+.photo-box.video-item:hover::after {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: #4e4e4e;
+  transform: translate(-50%, -50%) scale(1.1); /* Slight pop out */
+}
+
+.photo-box.video-item:hover::before {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
 .smaller-width {
   width: 50% !important;
 }
