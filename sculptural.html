@@ -49,6 +49,19 @@
         <div class="modal-image-track">
           <img class="modal-content" id="img-prev" src="" alt="" />
           <img class="modal-content" id="img-current" src="" alt="" />
+          <video
+            muted
+            loop
+            class="modal-content"
+            id="video-current"
+            controls
+            style="
+              display: none;
+              max-height: 85vh;
+              width: auto;
+              max-width: 100%;
+            "
+          ></video>
           <img class="modal-content" id="img-next" src="" alt="" />
         </div>
       </div>
@@ -56,6 +69,12 @@
     <div class="gallery-wrapper gallery-wrapper-yellow-override">
       <h2 class="gallery-title">Sculptural Work</h2>
       <div class="gallery margin-bottom">
+        <div class="tall-photo photo-box">
+          <img
+            src="images/ceramics/sculptural/nontrans/words.jpg"
+            data-video-src="videos/words_vid.mov"
+          />
+        </div>
         <div class="tall-photo photo-box">
           <img src="images/ceramics/sculptural/nontrans/receiving.jpg" />
         </div>

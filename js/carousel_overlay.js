@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var imgPrev = document.getElementById("img-prev");
   var imgCurrent = document.getElementById("img-current");
   var imgNext = document.getElementById("img-next");
+  var videoCurrent = document.getElementById("video-current"); // Target the new video element
 
   var nextIndex = 0;
 
@@ -19,24 +20,28 @@ document.addEventListener("DOMContentLoaded", () => {
   let isSwiping = false;
   const minSwipeDistance = 50;
 
-  // Helper to get the correct initial transform value for the current image in the middle
-  // This value represents the LEFT edge of the current image, so it's negative
   function getInitialTrackTransformValue() {
     if (window.innerWidth > 700) {
-      // Shift left by 1 image width (which is 33.33% of the 300% track, effectively 100% of the viewport's width)
-      return 0; // This is a percentage value
+      return 0;
     } else {
-      // Shift left by 100vw
-      return 0; // This is a pixel value
+      return 0;
     }
   }
 
-  // Helper to apply the transform based on type (px or %)
   function applyTrackTransform(value, isPercentage) {
     if (isPercentage) {
       imageTrack.style.transform = `translateX(${value}%)`;
     } else {
       imageTrack.style.transform = `translateX(${value}px)`;
+    }
+  }
+
+  // Unified helper to close modal and reset media cleanly
+  function closeModalWindow() {
+    modal.classList.remove("is-open");
+    if (videoCurrent) {
+      videoCurrent.pause();
+      videoCurrent.src = ""; // Hard stops video buffering/playback
     }
   }
 
@@ -47,35 +52,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentIndex = index;
 
-    // Load images
-    imgCurrent.src =
-      galleryImages[currentIndex].getAttribute("data-full-src") ||
-      galleryImages[currentIndex].src;
-    imgCurrent.alt = galleryImages[currentIndex].alt;
+    const currentImgElement = galleryImages[currentIndex];
+    const videoSrc = currentImgElement.getAttribute("data-video-src");
+
+    // Toggle between Image and Video mode for the center slide
+    if (videoSrc) {
+      imgCurrent.style.display = "none";
+      if (videoCurrent) {
+        videoCurrent.style.display = "block";
+        // Only change src if it's a different track item to avoid unnecessary reloading
+        if (!videoCurrent.src.endsWith(videoSrc)) {
+          videoCurrent.src = videoSrc;
+          videoCurrent.play();
+        }
+      }
+    } else {
+      if (videoCurrent) {
+        videoCurrent.style.display = "none";
+        videoCurrent.pause();
+        videoCurrent.src = "";
+      }
+      imgCurrent.style.display = "block";
+      imgCurrent.src =
+        currentImgElement.getAttribute("data-full-src") ||
+        currentImgElement.src;
+      imgCurrent.alt = currentImgElement.alt;
+    }
 
     if (window.innerWidth < 700) {
-      imgPrev.src =
-        galleryImages[prevIndex].getAttribute("data-full-src") ||
-        galleryImages[prevIndex].src;
-      imgPrev.alt = galleryImages[prevIndex].alt;
-
-      imgNext.src =
-        galleryImages[nextIndex].getAttribute("data-full-src") ||
-        galleryImages[nextIndex].src;
-      imgNext.alt = galleryImages[nextIndex].alt;
+      if (imgPrev) {
+        imgPrev.src =
+          galleryImages[prevIndex].getAttribute("data-full-src") ||
+          galleryImages[prevIndex].src;
+        imgPrev.alt = galleryImages[prevIndex].alt;
+      }
+      if (imgNext) {
+        imgNext.src =
+          galleryImages[nextIndex].getAttribute("data-full-src") ||
+          galleryImages[nextIndex].src;
+        imgNext.alt = galleryImages[nextIndex].alt;
+      }
     } else {
-      // Clear prev/next sources on desktop to prevent them from showing
-      imgPrev.remove();
-      imgNext.remove();
+      // Clear prev/next elements on desktop to prevent them from showing
+      if (imgPrev) imgPrev.remove();
+      if (imgNext) imgNext.remove();
 
-      // Get a reference to the HTML element
-      const imgCurrent = document.querySelector(".modal-content");
-
-      // Remove the 'disabled' attribute from the element
-      imgCurrent.style.setProperty("max-height", "none", "important");
-      imgCurrent.style.setProperty("width", "auto", "important");
+      // Apply desktop structural style overrides to whatever element is currently active
+      const activeMedia = videoSrc
+        ? videoCurrent
+        : document.querySelector(".modal-content");
+      if (activeMedia) {
+        activeMedia.style.setProperty("max-height", "none", "important");
+        activeMedia.style.setProperty("width", "auto", "important");
+      }
     }
-    // Reset track position to show current image in the middle
+
     const initialTransform = getInitialTrackTransformValue();
     const isPercentage = window.innerWidth > 700;
     imageTrack.classList.add("no-transition");
@@ -89,22 +120,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function navigate(direction) {
+    // Stop audio/playback immediately when the sliding movement initiates
+    if (videoCurrent) {
+      videoCurrent.pause();
+    }
+
     const isPercentageMode = window.innerWidth > 700;
     if (direction === "prev") {
       nextIndex =
         (currentIndex - 1 + galleryImages.length) % galleryImages.length;
       applyTrackTransform(window.innerWidth, isPercentageMode);
     } else {
-      // 'next'
       nextIndex =
         (currentIndex + 1 + galleryImages.length) % galleryImages.length;
       applyTrackTransform(-window.innerWidth, isPercentageMode);
     }
     if (isPercentageMode) {
-      loadTrackImages(nextIndex); // This will load images and set initial transform
+      loadTrackImages(nextIndex);
     }
 
-    // Re-enable transition after a short delay so subsequent swipes/resets are animated
     setTimeout(() => {
       imageTrack.classList.remove("no-transition");
     }, 50);
@@ -113,18 +147,22 @@ document.addEventListener("DOMContentLoaded", () => {
   galleryImages.forEach((img, index) => {
     img.onclick = function () {
       modal.classList.add("is-open");
-      loadTrackImages(index); // This will load images and set initial transform
+      loadTrackImages(index);
     };
   });
 
   var closeSpan = document.getElementsByClassName("close")[0];
   closeSpan.onclick = function () {
-    modal.classList.remove("is-open");
+    closeModalWindow();
   };
 
   window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.classList.remove("is-open");
+    if (
+      event.target === modal ||
+      event.target.classList.contains("modal-content-wrapper") ||
+      event.target.classList.contains("modal-image-track")
+    ) {
+      closeModalWindow();
     }
   };
 
@@ -143,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (event.key === "ArrowRight") {
         navigate("next");
       } else if (event.key === "Escape") {
-        modal.classList.remove("is-open");
+        closeModalWindow();
       }
     }
   });
@@ -152,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.touches.length === 1) {
       isSwiping = true;
       touchStartX = e.touches[0].clientX;
-      imageTrack.classList.add("no-transition"); // Disable transition for live dragging
+      imageTrack.classList.add("no-transition");
     }
   });
 
@@ -162,24 +200,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const deltaX = touchMoveX - touchStartX;
 
       const isPercentageMode = window.innerWidth > 700;
-      const initialTransformValue = getInitialTrackTransformValue(); // 0
+      const initialTransformValue = getInitialTrackTransformValue();
 
       let newTranslateValue;
 
       if (isPercentageMode) {
-        // We need deltaX as a percentage of the viewport width (which is 100% for one image)
         const viewportWidth = window.innerWidth;
-        const percentageDelta = (deltaX / viewportWidth) * 100; // Delta as a percentage of 100vw
-        newTranslateValue = initialTransformValue + percentageDelta; // Add percentage delta to -33.33
+        const percentageDelta = (deltaX / viewportWidth) * 100;
+        newTranslateValue = initialTransformValue + percentageDelta;
         applyTrackTransform(newTranslateValue, true);
       } else {
-        // For pixels, simply add deltaX to the initial pixel offset (-window.innerWidth)
         newTranslateValue = initialTransformValue + deltaX;
         applyTrackTransform(newTranslateValue, false);
       }
 
       if (Math.abs(deltaX) > 10) {
-        e.preventDefault(); // Prevent vertical scrolling if horizontal movement is significant
+        e.preventDefault();
       }
     }
   });
@@ -187,18 +223,15 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.addEventListener("touchend", () => {
     if (isSwiping && modal.classList.contains("is-open")) {
       const deltaX = touchMoveX - touchStartX;
-      imageTrack.classList.remove("no-transition"); // Re-enable transition for snap-back/snap-to-next
+      imageTrack.classList.remove("no-transition");
 
       if (Math.abs(deltaX) > minSwipeDistance) {
         if (deltaX > 0) {
-          // Swiped right (to show previous)
           navigate("prev");
         } else {
-          // Swiped left (to show next)
           navigate("next");
         }
       } else {
-        // Snap back to current image if swipe wasn't significant
         const initialTransform = getInitialTrackTransformValue();
         const isPercentage = window.innerWidth > 700;
         applyTrackTransform(initialTransform, isPercentage);
@@ -212,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     if (modal.classList.contains("is-open")) {
       imageTrack.classList.add("no-transition");
-      // Ensure the track snaps to the correct centered position after resize
       const initialTransform = getInitialTrackTransformValue();
       const isPercentage = window.innerWidth > 700;
       applyTrackTransform(initialTransform, isPercentage);

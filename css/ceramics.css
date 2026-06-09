@@ -46,6 +46,7 @@
 
 .photo-box img {
   width: 100%;
+  cursor: pointer;
 }
 
 .smaller-width {
